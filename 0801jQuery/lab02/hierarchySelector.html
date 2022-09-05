@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hierarchy Selector</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Hierarchy Selector</h1>
+    </header>
+    <div class="container">
+        <div id="div1">
+            <a>child a</a>
+            <p>child p <a>aaa</a></p>
+            <div>
+                <p>descendant p</p>
+                <p>descendant p</p>
+            </div>
+        </div>
+        <p>next p</p>
+        <p>sibling p</p>
+    </div>
+    <hr>
+    <button id="gt">div>p</button>
+    <button id="space">div p</button>
+    <button id="plus">div+p</button>
+    <button id="wave">div~p</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            $('#gt').on('click', function () {
+                $('#div1>p').css('background', 'lightgreen')
+            })
+
+            $('#space').on('click', function () {
+                $('#div1 p').css('background', 'red')
+            })
+
+            $('#plus').on('click', function () {
+                $('#div1+p').css('background', 'lightblue')
+            })
+
+            $('#wave').on('click', function () {
+                $('#div1~p').css('background', 'yellow')
+            })
+        })
+    </script>
+</body>
+
+</html>

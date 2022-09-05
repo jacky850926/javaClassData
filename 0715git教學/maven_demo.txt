@@ -1,0 +1,37 @@
+1.https://maven.apache.org/download.cgi
+
+2.解壓縮到指定位置
+
+3.設定環境變數
+新增 M2_HOME 選擇該目錄
+
+path %M2_HOME%\bin
+
+4. cmd > mvn -v
+
+5.conf > settings.xml 開啟
+
+6.  <mirrors>標籤上方  設定jar下載的位置
+輸入 <localRepository>D:\maven_repository</localRepository>
+
+7.複製settings.xml 貼到 你下載的位置資料夾
+
+======================================================
+eclipse
+
+1.window >preferences > maven > installations > 
+add >選擇資料夾 >選擇剛剛新增的打勾 > apply
+
+2.User settings > User settings >選擇你下載的資料夾位置裡面的settings.xml
+確認下面是你指定的下載位置 >apply and close
+=========================================================
+
+1.專案右鍵 > configure > convert to maven project
+pom > <dependencies> </dependencies>
+
+https://mvnrepository.com/ 
+在網站上找要的jar 複製貼上
+
+下載後 建議
+右鍵 > maven > update project 
+2.new > maven project > 第一個打勾 simple project 

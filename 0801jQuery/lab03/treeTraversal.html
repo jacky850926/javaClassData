@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree Traversal</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        #table1 {
+            border: 2px solid black;
+            width: 500px;
+            height: 500px;
+            margin: auto;
+        }
+
+        #table1 tr td {
+            border: 1px solid black;
+        }
+
+        #table1 td {
+            width: 90px;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: pink;
+            margin: auto;
+            /* 主軸對齊方式 */
+            justify-content: center;
+            /* 交錯軸對齊方式 */
+            align-items: center;
+            display: flex;
+        }
+
+        .box2 {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: lightgreen;
+            margin: auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Tree Traversal</h1>
+    </header>
+    <div class="container">
+        <table id="table1">
+            <tr>
+                <td>
+                    <div class="box"></div>
+                </td>
+                <td class="stop"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="box"></div>
+                </td>
+                <td class="stop"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="stop"></td>
+                <td></td>
+                <td>
+                    <div class="box"></div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div class="box"></div>
+                </td>
+                <td></td>
+                <td></td>
+                <td class="stop"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="stop"></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="box">
+                        <div class="box2"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            $('td').on('click', function () {
+                // console.log('123')
+                //往下找子元素
+                // $(this).children().children('.box2').css('background', 'black')
+                // $(this).find('.box2').css('background', 'yellow')
+
+                //兄弟層往後找
+                // $(this).next().css('background', 'lightblue')
+                // $(this).nextAll().css('background', 'lightblue')
+                // $(this).nextUntil('.stop').css('background', 'lightblue')
+
+                //兄弟層往前找
+                // $(this).prev().css('background', 'lightgreen')
+                // $(this).prevAll().css('background', 'lightgreen')
+                // $(this).prevUntil('.stop').css('background', 'lightgreen')
+
+                // $(this).next().css('background', 'lightblue')
+                // $(this).prev().css('background', 'lightgreen')
+
+                // $(this).css('background', 'white').next().css('background', 'lightblue').prev().prev().css('background', 'lightgreen')
+
+                // // end()
+                // $(this).css('background', 'white').next().css('background', 'lightblue').end().prev().css('background', 'lightgreen')
+
+                // siblings
+                $(this).siblings().css('background', 'pink')
+            })
+            $('.box').on('click', function () {
+                //往上找父元素
+                // $(this).parent().css('background', 'lightblue')
+                console.log($(this).parents())
+                // $(this).parentsUntil('table').css('background', 'lightblue')
+                // $(this).closest('tr').css('background', 'lightgreen')
+            })
+
+
+        })
+    </script>
+</body>
+
+</html>

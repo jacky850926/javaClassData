@@ -1,0 +1,2 @@
+﻿<br />
+<b>Fatal error</b>:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in <b>/var/www/html/Ap/vendor/dibi/dibi/src/Dibi/Row.php</b> on line <b>21</b><br />

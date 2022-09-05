@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basic selectors</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        table {
+            border: 2px solid black;
+            width: 300px;
+            height: 300px;
+            /* 上下 左右 */
+            margin: 10 auto;
+        }
+
+        tr td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Basic Selectors</h1>
+    </header>
+    <div class="container">
+        <table id="target" class="target">
+            <tr>
+                <td>1</td>
+                <td class="not">2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td class="not">3</td>
+            </tr>
+            <tr>
+                <td class="not">1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+        <ul>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+        </ul>
+        <p id="para1"> <span>jQuery</span> ipsum dolor sit amet consectetur adipisicing elit. Blanditiis voluptatem, hic
+            ipsa quos
+            tenetur
+            laudantium. Dolor, atque, officiis pariatur error ipsa porro amet ab voluptatum eos aut minus provident
+            deserunt?</p>
+
+        <p id="para2">Hello Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus vel corrupti modi,
+            maxime
+            fugit quos
+            omnis delectus totam vitae ullam sed impedit quo. Consequatur, necessitatibus eius neque in eveniet esse.
+        </p>
+        <p id="para3"></p>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            // filtering selector
+            $('li').first().css('background', 'lightblue')
+            $('li').last().css('background', 'blue')
+            // .eq(n) n從0開始
+            $('li').eq(1).css('background', 'lightgreen')
+            // $('td').not('td.not').css('background', 'red')
+
+            $('td').on('mouseenter', function () {
+                console.log($(this).index())
+            })
+
+
+            // content filter selector
+            $('p:contains("Hello")').css('background', 'lightgreen')
+            $('p:has(span)').css('background', 'lightblue')
+            $('p:parent').css('background', 'red')
+            $('p:empty').text('empty test')
+
+            // child filter selector
+            $('tr td:first-child').css('background', 'pink')
+            $('tr td:last-child').css('background',
+                'yellow')
+            // nth-child(n) n從1開始
+            $('tr td:nth-child(2)').css('background', 'lightblue')
+            $('tr td:only-child').css('background', 'black')
+
+            let all = $('*')
+            // console.log(all)
+            let ele = $('table')
+            // console.log(ele)
+            let class1 = $('.target')
+            let id1 = $('#target')
+            // console.log(class1)
+            // console.log(id1)
+            // console.log($('table,div'))
+            /* 
+            // basic filter
+            // :eq(n) n從0開始
+            $('td:eq(1)').css('background', 'pink')
+            $('td:eq(3)').css('background', 'pink')
+            $('td:even,li:even').css('background', 'lightgreen')
+            $('td:odd').css('background', 'lightblue')
+            // lt <3
+            $('td:lt(3)').css('background', 'yellow')
+            // gt >4
+            $('td:gt(4)').css('background', 'red')
+            $('td:first').css('background', 'black')
+            $('td:last').css('background', 'white')
+            $('td:not(.not)').css('background', 'blue')
+            */
+        })
+    </script>
+</body>
+
+</html>

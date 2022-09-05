@@ -1,0 +1,18 @@
+{
+ "cwbopendata": {
+  "@xmlns": "urn:cwb:gov:tw:cwbcommon:0.1",
+  "identifier": "271465a0-7f93-9931-5270-b7ea9993b243",
+  "sender": "weather@cwb.gov.tw",
+  "sent": "2022-06-28T11:32:42+08:00",
+  "status": "Actual",
+  "msgType": "Issue",
+  "dataid": "C0032-031",
+  "dataset": {
+   "resource": {
+    "resourceDesc": "全臺天氣小幫手",
+    "mimeType": "text/txt",
+    "uri": "https://cwbopendata.s3.ap-northeast-1.amazonaws.com/MFC/F-C0032-031.FW50"
+   }
+  }
+ }
+}
