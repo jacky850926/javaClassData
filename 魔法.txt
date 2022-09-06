@@ -1,0 +1,9 @@
+ctrl+o快速搜尋outline
+ctrl+shift+r打開文件列表
+ctrl+e切換分頁
+ctrl+page down 或 ctrl+page up下一個或上一個分頁
+shift+enter 及 ctrl+shift+enter往上列插入一個空白列
+ctrl+m編輯窗口最大化
+[Ctrl+Shift+P ]：轉至匹配的括號 
+[F3]：找變數宣告處
+[Alt+方向鍵左鍵]：前往上一個工作區

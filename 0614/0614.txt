@@ -1,0 +1,32 @@
+班代:
+1.setting老師筆電
+2.電腦櫃
+3.手機櫃
+簽到 "簽退"
+
+採買? 棉花棒 延長線 立可帶 水壺
+可以改密碼嗎?
+
+科學麵 10 元
+午餐 泰式便當 110元
+
+鑰匙
+
+座號_名字_作業1
+
+    		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(br);
+    		for(CSVRecord record :records) {
+    			String id = record.get("員工編號");
+    		    String name = record.get("姓名");
+    		    String salary = record.get("薪水");
+    		    String age = record.get("年齡");
+    		    System.out.println(id);
+    		    System.out.println(name);
+    		    System.out.println(salary);
+    		    System.out.println(age);
+
+
+SELECT...
+ORDER BY C-DATE DESC
+OFFSET (mpage-1)*20 ROWS
+FETCH NEXT 20 ROWS ONLY

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>append</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        table {
+            border: 2px solid black;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            append
+        </h1>
+    </header>
+    <div class="container">
+        <button id="append">append data</button>
+        <button id="appendTo">appendTo data</button>
+        <button id="prepend">prepend data</button>
+        <button id="prependTo">prependTo data</button>
+        <button id="after">after data</button>
+        <button id="insertAfter">insertAfter data</button>
+        <button id="before">before data</button>
+        <button id="insertBefore">insertBefore data</button>
+        <button id="empty">empty</button>
+        <button id="remove">remove</button>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="move">
+                    <td>0 Gary</td>
+                    <td>garylee@ispan.com</td>
+                    <td>034533013</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            let i = 1
+            $('#append').on('click', function () {
+                let content = `
+                <tr>
+                    <td>${i} append</td>
+                    <td>append@ispan.com</td>
+                    <td>034533013</td>
+                </tr>
+                `
+                $('tbody').append(content)
+                i++;
+            })
+
+            $('#appendTo').on('click', function () {
+                $('#move').appendTo('tbody')
+            })
+
+            $('#prepend').on('click', function () {
+                let content = `
+                <tr>
+                    <td>${i} prepend</td>
+                    <td>prepend@ispan.com</td>
+                    <td>034533013</td>
+                </tr>
+                `
+                $('tbody').prepend(content)
+                i++
+            })
+            $('#prependTo').on('click', function () {
+                $('#move').prependTo('tbody')
+            })
+
+            $('#after').on('click', function () {
+                $('#move').after(`
+                <tr>
+                    <td>${i} after</td>
+                    <td>after@ispan.com</td>
+                    <td>034533013</td>
+                </tr>
+                `)
+                i++;
+            })
+
+            $('#insertAfter').on('click', function () {
+                $(`
+                <tr>
+                    <td>${i} insertAfter</td>
+                    <td>insertAfter@ispan.com</td>
+                    <td>034533013</td>
+                </tr>
+                `).insertAfter('#move')
+                i++;
+            })
+
+            $('#before').on('click', function () {
+                $('#move').before(`
+                <tr>
+                    <td>${i} before</td>
+                    <td>before@ispan.com</td>
+                    <td>034533013</td>
+                </tr>
+                `)
+                i++;
+            })
+            $('#insertBefore').on('click', function () {
+                $(`
+                <tr>
+                    <td>${i} insertBefore</td>
+                    <td>insertBefore@ispan.com</td>
+                    <td>034533013</td>
+                </tr>
+                `).insertBefore('#move')
+                i++;
+            })
+
+            $('#empty').click(function () {
+                $('tbody').empty()
+            })
+
+            $('#remove').click(function () {
+                $('tbody').remove()
+            })
+
+        })
+    </script>
+</body>
+
+</html>

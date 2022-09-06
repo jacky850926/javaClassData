@@ -1,0 +1,2 @@
+Programmer1~2年	->designer->CTO
+			->system analyst(客戶端訪談,整理需求文件給設計人員->project manager地獄
