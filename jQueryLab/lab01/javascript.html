@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+            line-height: 1.5em;
+        }
+
+        header {
+            background-color: black;
+            color: lightgreen;
+            /* 內距 */
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>JavaScript</h1>
+    </header>
+    <div class="container">
+        <h1 id="target">JavaScript</h1>
+        <hr>
+        <!--  -->
+        <h1 class="targetAll">JavaScript</h1>
+        <h1 class="targetAll">JavaScript</h1>
+        <h1 class="targetAll">JavaScript</h1>
+
+        <!-- ctrl + alt + down -->
+
+    </div>
+    <script>
+        /*
+        WHO 對誰哪個元素
+        WHEN 甚麼事件
+        WHAT 做甚麼事情
+        */
+
+        let h1 = document.querySelector('#target')
+        console.log(h1)
+        h1.addEventListener('mouseenter', function () {
+            h1.style.color = 'yellow'
+        })
+        h1.addEventListener('mouseleave', function () {
+            h1.style.color = 'black'
+        })
+        let h1All = document.querySelectorAll('.targetAll')
+        console.log(h1All)
+        for (let i = 0; i < h1All.length; i++) {
+            h1All[i].addEventListener('mouseenter', function () {
+                h1All[i].style.color = 'red'
+            })
+            h1All[i].addEventListener('mouseleave', function () {
+                h1All[i].style.color = 'black'
+            })
+
+        }
+    </script>
+</body>
+
+</html>

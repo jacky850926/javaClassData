@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouse</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        div.out {
+            height: 250px;
+            width: 40%;
+            background-color: lightblue;
+            margin: 0 15px;
+            float: left;
+        }
+
+        div.in {
+            width: 60%;
+            height: 60%;
+            background-color: lightgreen;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Mouse Events</h1>
+    </header>
+    <div class="container">
+        <button id="btn">Button</button>
+        <div class="out overout">
+            <span>move your mouse</span>
+            <div class="in over"></div>
+        </div>
+
+        <div class="out enterleave">
+            <span>move your mouse</span>
+            <div class="in enter"></div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            // 比較少用了
+            $('#btn').dblclick(function () {
+                console.log('double click')
+            })
+            // 比較少用了
+            $('#btn').contextmenu(function () {
+                console.log('right click')
+            })
+            $('#btn').mousedown(function () {
+                console.log('mousedown')
+            })
+            $('#btn').mouseup(function () {
+                console.log('mouseup')
+            })
+
+            let count_overout = 0
+            $('div.overout').mouseover(function () {
+                count_overout += 1
+                $(this).find('span').text('mouse over X ' + count_overout)
+            })
+
+            let count_enterleave = 0
+            $('div.enterleave').mouseenter(function () {
+                count_enterleave += 1
+                $(this).find('span').text('mouse enter X ' + count_enterleave)
+            })
+
+        })
+    </script>
+</body>
+
+</html>

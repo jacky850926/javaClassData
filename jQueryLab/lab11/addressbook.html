@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>address book</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .input {
+            display: inline-block;
+        }
+
+        table {
+            border: 2px solid black;
+            width: 500px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Address Book</h1>
+    </header>
+    <div class="container">
+        <div class="input">
+            <input type="text" id="name" placeholder="請輸入姓名">
+        </div>
+        <div class="input">
+            <input type="text" id="email" placeholder="請輸入E-mail">
+        </div>
+        <div class="input">
+            <input type="text" id="phone" placeholder="請輸入電話">
+        </div>
+        <div class="input">
+            <button id="add">add</button>
+        </div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>action</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+
+            $('#add').on('click', function () {
+                let name = $('#name').val(), email = $('#email').val(), phone = $('#phone').val()
+                // console.log(name)
+                // console.log(email)
+                // console.log(phone)
+                let content = `
+                <tr>
+                    <td>${name}</td>
+                    <td>${email}</td>
+                    <td>${phone}</td>
+                    <td><button class="del">del</button></td>
+                </tr>
+                
+                `
+                $('tbody').append(content)
+                // $('#name').val("")
+                // $('#email').val("")
+                // $('#phone').val("")
+            })
+
+            $('tbody').on('click', '.del', function () {
+                $(this).closest('tr').remove()
+            })
+
+        })
+    </script>
+</body>
+
+</html>

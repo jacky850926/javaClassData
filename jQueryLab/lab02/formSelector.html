@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form selector</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Form Selector</h1>
+    </header>
+    <div class="container">
+        <form>
+            <div>
+                <label for="text">Text:</label>
+                <input type="text" id="text" value="請輸入">
+            </div>
+            <div>
+                <label for="">Radio Group</label>
+                <input type="radio" name="radiogroup" id="radioA" checked>A
+                <input type="radio" name="radiogroup" id="radioB">B
+                <input type="radio" name="radiogroup" id="radioC" disabled>C
+            </div>
+            <div>
+                <label for="">checkbox</label>
+                <input type="checkbox" name="" id="checkbox1" value="1">1
+                <input type="checkbox" name="" id="checkbox1" value="3" disabled>1
+                <input type="checkbox" name="" id="checkbox2" value="2" checked>2
+            </div>
+            <div>
+                <label for="">select</label>
+                <select name="" id="select">
+                    <option value="I">I</option>
+                    <option value="II" selected>II</option>
+                </select>
+            </div>
+        </form>
+        <hr>
+        <button id="btn">:checked</button>
+        <button id="btn1">:selected</button>
+        <button id="btn2">:disabled</button>
+        <button id="btn3">:text</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            $('#btn').on('click', function () {
+                console.log($(':checked'))
+            })
+            $('#btn1').on('click', function () {
+                console.log($(":selected"))
+            })
+            $('#btn2').on('click', function () {
+                console.log($(':disabled'))
+            })
+            $('#btn3').on('click', function () {
+                $(':text').css('background', 'pink')
+            })
+
+        })
+    </script>
+</body>
+
+</html>
