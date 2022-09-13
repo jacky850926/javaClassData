@@ -40,3 +40,5 @@ ID 名稱
 
 設備圖示class接在字的後面，主打放前五個
 kits https://fontawesome.com/kits/8afe291691/use
+
+http://www.eyny.com/thread-9001514-1-1.html
