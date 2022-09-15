@@ -7,17 +7,22 @@ select * from room;
 
 select * from reservation;
 
+select * from roomstyle;
+
 select sum(numberOfRoom) from reservation group by roomID
 
-select * from room e1 cross join reservation e2 cross join roomstyle e3 
+select *,'2022-09-11' checkInDate,'2022-09-12' checkOutDate from room cross join roomstyle;
 
-select * from room e1 join reservation e2 on e1.roomID = e2.roomID join roomstyle e3 on e1.roomstyleID = e3.styleID
+select roomID,'2022-09-11' checkInDate,'2022-09-12' checkOutDate from room;
 
-select * from room e1 right join reservation e2 on e1.roomID = e2.roomID where checkindate not in ('2022-09-11')
+select reservationID,roomID,checkInDate,checkOutDate from reservation where checkInDate in ('2022-09-11','2022-09-12') or checkoutdate in ('2022-09-11','2022-09-12');
 
+select roomID,'2022-09-11' checkInDate,'2022-09-12' checkOutDate from room where roomID not in ((select roomID from reservation where checkInDate in ('2022-09-11','2022-09-12') or checkoutdate in ('2022-09-11','2022-09-12')));
 
-select * from room e1 left join reservation e2 on e1.roomID = e2.roomID where e2.checkindate in ('2022-09-11')
+select * from room where roomID not in  ((select roomID from reservation where checkInDate in ('2022-09-11','2022-09-12') or checkoutdate in ('2022-09-11','2022-09-12')))
 
-select * from room e1 left join reservation e2 on e1.roomID = e2.roomID where checkindate not in ('2022-09-11')
+select * from room where roomID not in  (select roomID from reservation where checkInDate between '2022-09-12' and '2022-09-14' or checkoutdate between '2022-09-12' and '2022-09-14')
 
-select * from room e1 left join reservation e2 on e1.roomID = e2.roomID where checkindate between '2022-09-11' and '2022-09-13' 
+select roomID from reservation where checkInDate between '2022-09-12' and '2022-09-14' or checkoutdate between '2022-09-12' and '2022-09-14'
+
+select * from room e1 join reservation e2 on e1.roomID  = e2.roomID
