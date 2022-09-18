@@ -41,6 +41,10 @@ ID 名稱
 設備圖示class接在字的後面，主打放前五個
 kits https://fontawesome.com/kits/8afe291691/use
 
+https://ckeditor.com/
+
 http://www.eyny.com/thread-9001514-1-1.html
+
+
 
 select groupName from group where groupid in (select groupId from room where roomid not in (select roomid from orderItem where (startTime > '2010-3-1' and startTime < '2010-3-5' ) || (endTime > '2010-3-1' and endTime < '2010-3-5' )));
