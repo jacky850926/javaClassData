@@ -39,7 +39,6 @@ mssql.connect(config_db, function (err) {
 app.post('/webhook', function (req, res) {
     //拿到電影名稱
     let data = req.body;
-    //////////////////categorytype要改成要接的關鍵字參數
     let queryCategory = data.queryResult.parameters["categorytype"];
     console.log("[queryCategory] ", queryCategory);
     //兩種查詢條件
@@ -56,51 +55,25 @@ app.post('/webhook', function (req, res) {
         function (err, body, fields) {
             if (err) throw err;
             else console.log('Selected ' + body.recordset.length + ' row(s)');
-            sendCards(body, res);
+            // sendCards(body, res);
+            sendSingleCards(body, res);
         }
     );
 
 });
 
-function sendCardsSingleCard(body, res) {
-    console.log("[sendCards] in");
-    console.log("body", JSON.stringify(body));
-    var thisFulfillmentMessages = [];
-    //多筆資料用卡片的格式來呈現
-    for (var x = 0; x < body.recordset.length; x++) {
-        var thisObject = {};
-        thisObject.card = {};
-        thisObject.card.title = body.recordset[x].Name;
-        thisObject.card.subtitle = body.recordset[x].Category;
-        thisObject.card.imageUri = body.recordset[x].Photo;
-        thisObject.card.buttons = [
-            {
-                text: "看大圖",
-                postback: body.recordset[x].Photo
-            }
-        ];
-        thisFulfillmentMessages.push(thisObject);
-    }
-    console.log("thisFulfillmentMessages", JSON.stringify(thisFulfillmentMessages));
-    res.json({ fulfillmentMessages: thisFulfillmentMessages });
-}
-
-function sendCards(body, res) {
+function sendSingleCards(body, res) {
     console.log('[sendCards] In');
     var thisFulfillmentMessages = [];
-
-    //1.增加Line貼圖訊息
-
     var stickerObject = {
         payload: {
             line: {
                 "type": "sticker",
-                "packageId": "6325",
-                "stickerId": "10979913"
+                "packageId": "446",
+                "stickerId": "1988"
             }
         }
     };
-
     thisFulfillmentMessages.push(stickerObject);
 
     var videoObject = {
@@ -116,83 +89,14 @@ function sendCards(body, res) {
 
     thisFulfillmentMessages.push(videoObject);
 
-    var locationObject = {
-        payload: {
-            line: {
-                "type": "location",
-                "title": "資展國際(中壢)",
-                "address": "320桃園市中壢區新生路二段421號",
-                "latitude": 24.9852403,
-                "longitude": 121.2199917
-            }
-        }
-    };
-
-    thisFulfillmentMessages.push(locationObject);
-
-    var flexObject = {
-        payload: {
-            line: {
-                "type": "flex",
-                "altText": "this is a flex message",
-                "contents": {
-                    "type": "bubble",
-                    "header": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "喔耶，我的第一個Flex訊息",
-                                "color": "#0000FF",
-                                "weight": "bold",
-                                "align": "center"
-                            }
-                        ]
-                    },
-                    "hero": {
-                        "type": "image",
-                        "url": "https://i.ibb.co/55jkrDK/bbb-splash.png"
-                    },
-                    "body": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": []
-                    },
-                    "footer": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "後面沒有了",
-                                "align": "center",
-                                "decoration": "none"
-                            }
-                        ]
-                    },
-                    "styles": {
-                        "body": {
-                            "separator": true
-                        }
-                    }
-                }
-            }
-        }
-    };
-
-    thisFulfillmentMessages.push(flexObject);
-
-
-
-
-
-
     var thisLineObject = {
+
+
+
         payload: {
             line: {
                 type: "template",
-                altText: "你沒手機嗎?不會用手機看哦",
+                altText: "this is a carousel template",
                 template: {
                     type: "carousel",
                     columns: []
@@ -225,4 +129,27 @@ function sendCards(body, res) {
         fulfillmentMessages: thisFulfillmentMessages
     };
     res.json(responseObject);
+}
+
+function sendCards(body, res) {
+    console.log("[sendCards] in");
+    console.log("body", JSON.stringify(body));
+    var thisFulfillmentMessages = [];
+    //多筆資料用卡片的格式來呈現
+    for (var x = 0; x < body.recordset.length; x++) {
+        var thisObject = {};
+        thisObject.card = {};
+        thisObject.card.title = body.recordset[x].Name;
+        thisObject.card.subtitle = body.recordset[x].Category;
+        thisObject.card.imageUri = body.recordset[x].Photo;
+        thisObject.card.buttons = [
+            {
+                text: "看大圖",
+                postback: body.recordset[x].Photo
+            }
+        ];
+        thisFulfillmentMessages.push(thisObject);
+    }
+    console.log("thisFulfillmentMessages", JSON.stringify(thisFulfillmentMessages));
+    res.json({ fulfillmentMessages: thisFulfillmentMessages });
 }
