@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Event</title>
     <link rel="stylesheet" href="/style.css">
     <style>
         #div1 {
@@ -32,39 +32,55 @@
         <h1>event</h1>
     </header>
     <div class="container">
-        <button id="btn">Buttton</button>
-    </div>
-    <hr>
-    <div id="div1">
-        div element
-        <p>
-            p element
-            <span>span element</span>
-        </p>
+        <button id="btn">Button</button>
+        <textarea name="" id="textarea" cols="30" rows="10"></textarea>
+        <hr>
+        <div id="div1">
+            div element
+            <p>
+                p element
+                <span>span element</span>
+            </p>
+        </div>
+        <hr>
+        <a href="https://jquery.com/">jQuery.com</a>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
         $(function () {
-
-            $('#div1').on('click', function () {
-                console.log('this.is div element was click')
+            $('a').on('click', function () {
+                event.preventDefault()
             })
 
-            $('p').on('click')
+
+            $('#div1').on('click', function () {
+                console.log('this is div element was click')
+            })
+
+            $('p').on('click', function () {
+                // event.stopPropagation()
+                console.log('this is p element was click')
+            })
+
+            $('span').on('click', function () {
+                event.stopPropagation()
+                console.log('this is span element was click')
+            })
+
 
             $('#btn').on('click', function () {
                 console.log(event.type)
                 console.log(event.which)
             })
 
-            $('#btn').on(function () {
-                console.log(123)
+            $('#btn').click(function () {
+                console.log('123')
             })
 
-            // $('#textarea').mousemove(function() {
-            // console.log(ˋpageX: ${ event.pageX }, pageY: ${ event.pageY }ˋ)
-            // }
-            // }
+            $('#textarea').mousemove(function () {
+                console.log(`pageX:${event.pageX},pageY:${event.pageY}`)
+            })
+
         })
     </script>
 </body>

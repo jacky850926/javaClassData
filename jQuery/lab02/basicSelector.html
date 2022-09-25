@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basic selecors</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        table {
+            border: 2px solid black;
+            width: 300px;
+            height: 300px;
+            margin: 10 auto;
+        }
+
+        tr td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Basic Selector</h1>
+    </header>
+    <div class="container">
+        <table id="target">
+            <tr>
+                <td>1</td>
+                <td class="not">2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td class="not">2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <li>4</li>
+                <li>4</li>
+                <li>4</li>
+            </tr>
+        </table>
+        <p id="para1"><span>jQuery</span>Lorem ipsum dolor sit amet consectetur adipisicing elit.Odit vitae fugit dolor
+            ad cumque molestias qui necessitatibus consequuntur minus delectus sint est temporibus, to
+            tam atque et quaerat magni, ratione excepturi?</p>
+
+        <p id="para2">Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+            pedita, doloremque maiores molestias quam sit sed dolore, hic laborum, quisquam reprehenderit quia debitis!
+            Enim delectus, consequuntur similique laboriosam magni tempora suscipit?</p>
+        <p class="para3"></p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            //filtering selector
+            // $('li').first().css('background', 'lightblue')
+            // $('li').last().css("background", "red")
+            // $('li').eq(1).css("background", "blue")
+            // $('td').on('mouseenter', function () {
+            //     console.log($(this).index())
+            // })
+            $('#target td').css('background', 'red')
+
+            // // content filter
+            // $('p:contains("Hello")').css('background', 'green')
+
+            // $('p:has(span)').css('background', 'lightblue')
+            // $('p:parent').css('background', 'red')
+            // $('p:empty').text('empty text')
+
+            // // child filter selector
+            // $('tr td:first-child').css('background', 'pink')
+            // $('tr td:last-child').css('background', 'yellow')
+            // $('tr td:nth-child(2)').css('background', 'lightblue')
+            // $('tr td:only-child').css('background', 'black')
+
+
+            let all = $('*')
+            // console.log(all)
+            let ele = $('table')
+            // console.log(ele);
+            let class1 = $('.target')
+            let id1 = $('#target')
+            // // console.log(class1);
+            // // console.log(id1);
+            // // console.log($('table,div'))
+            // // basic filter
+            // $('td:eq(1)').css("background", "pink")
+            // $('td:eq(3)').css("background", "pink")
+            // $('td:even').css("background", "lightgreen")
+            // $('td:odd').css("background", "lightblue")
+            // $('td:lt(3)').css("background", "yellow")
+            // $('td:gt(4)').css("background", "black")
+            // $('td:first').css("background", "red")
+            // $('td:last').css("background", "white")
+            //$('td:not(.not)').css("background", "purple")
+
+        })
+    </script>
+</body>
+
+</html>

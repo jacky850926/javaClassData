@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Append</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        table {
+            border: 2px solid black;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            append
+        </h1>
+    </header>
+    <div class="container">
+        <button id="append">append data</button>
+        <button id="appendTo">appendTO data</button>
+        <button id="prepend">prepend data</button>
+        <button id="prependTo">prependTo data</button>
+        <button id="after">after data</button>
+        <button id="before">before data</button>
+        <button id="insertBefore">insertbefore data</button>
+        <button id="empty">empty</button>
+        <button id="remove">remove</button>
+
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="move">
+                    <td>0 Gary</td>
+                    <td>yaoo</td>
+                    <td>0123456789</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+
+        $(function () {
+            let i = 1;
+            $('#append').on('click', function () {
+                let content =
+                    `
+                <tr>
+                    <td>${i} append</td>
+                    <td>append@ispan.com</td>
+                    <td>034533013</td>
+                `
+                $('tbody').append(content)
+                i++
+
+            })
+
+            $('#appendTo').on('click', function () {
+                $('#move').appendTo('tbody')
+            })
+
+
+            $('#prepend').on('click', function () {
+                let content =
+                    `
+                <tr>
+                    <td>${i} append</td>
+                    <td>append@ispan.com</td>
+                    <td>034533013</td>
+                `
+                $('tbody').prepend(content)
+                i++
+
+            })
+
+            $('#prependTo').on('click', function () {
+                $('#move').prependTo('tbody')
+            })
+
+            $('#after').on('click', function () {
+                $('#move').after(`
+                <tr>
+                    <td>${i} append</td>
+                    <td>append@ispan.com</td>
+                    <td>034533013</td>               
+                
+                `)
+                i++;
+            })
+
+            $('#insertAfter').on('click', function () {
+                $(`               <tr>
+                    <td>${i} append</td>
+                    <td>append@ispan.com</td>
+                    <td>034533013</td>   `
+                ).insertAfter('#move')
+
+                i++;
+            })
+
+            $('#before').on('click', function () {
+                $('#move').before(`
+                <tr>
+                    <td>${i} append</td>
+                    <td>append@ispan.com</td>
+                    <td>034533013</td>               
+                
+                `)
+                i++;
+            })
+
+            $('#insertBefore').on('click', function () {
+                $(`             
+                <tr>
+                    <td>${i} append</td>
+                    <td>append@ispan.com</td>
+                    <td>034533013</td>   `
+                ).insertBefore('#move')
+
+                i++;
+            })
+
+            $('#empty').click(function () {
+                $('tbody').empty()
+            })
+
+            $('#remove').click(function () {
+                $('tbody').remove()
+            })
+
+        })
+
+
+    </script>
+</body>
+
+</html>

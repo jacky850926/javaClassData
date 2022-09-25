@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>keyborad events</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>
+            Keyborad Events
+        </h1>
+    </header>
+    <div class="container">
+        <input type="text" id="input" placeholder="請輸入">
+        <div id="target"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            $('#input').keyup(function () {
+                console.log('123')
+                // console.log(event.which)
+                // console.log($(this).val())
+                // $('#target').text($(this).val())
+            })
+
+            // $('#input').keydown(function () {
+            //     // $('#target').text($(this).val())
+            //     console.log(event.keyCode)
+            //     if (event.ctrlKey && event.altKey) {
+            //         $('#target').text('ctrl + alt')
+            //     }
+            // })
+            // ESC 方向鍵 功能鍵無法偵測
+            $('#input').keypress(function () {
+                console.log('456')
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>AJAX</h1>
+    </header>
+    <div class="container">
+        <button id="btn">AJAX</button>
+        <ul id="data">
+            <li></li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            /*
+            $.ajax({
+                url:'' ,url位址
+                type: 'get',get/post
+                data:{},輸入資料
+                success: function(){},
+                error: function(){}
+            })
+            */
+            $('#btn').on('click', function () {
+                $.ajax({
+                    url: 'https://datacenter.taichung.gov.tw/swagger/OpenData/50311059-c336-4072-8aa8-920f22552799',
+                    success: function (response) {
+                        $.each(response, function (index, ele) {
+                            $('#data').append(
+                                `<li>${ele.區別}</li>
+                                 <li>${ele.金額1}</li>
+                                `
+                            )
+
+                        }
+                        )
+                    }
+
+                })
+            })
+
+
+
+        })
+    </script>
+</body>
+
+</html>

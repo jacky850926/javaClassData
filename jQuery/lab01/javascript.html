@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript</title>
+    <title>Document</title>
     <style>
         body {
             font-size: 17px;
@@ -32,33 +32,41 @@
 
 <body>
     <header>
-        <h1>Javascript</h1>
+        <h1>JavaScript</h1>
     </header>
     <div class="container">
-        <h1 id="target">Javascript</h1>
-        <h1 class="targetAll">Javascript</h1>
-        <h1 class="targetAll">Javascript</h1>
-        <h1 class="targetAll">Javascript</h1>
+        <h1 id="target1">JavaScript</h1>
+        <h1 id="targetAll">JavaScript</h1>
+        <h1 id="targetAll">JavaScript</h1>
+        <h1 id="targetAll">JavaScript</h1>
     </div>
     <script>
-        let h1 = document.querySelector('#target')
+        let h1 = document.querySelector('#target1');
         console.log(h1)
-        h1.addEventListener('mouseenter', function () {
-            h1.style.color = 'yellow'
+        h1.addEventListener('mouseenter', function
+            () {
+            h1.style.color = "yellow"
         })
-        h1.addEventListener('mouseleave', function () {
-            h1.style.color = 'black'
+        h1.addEventListener('mouseleave', function
+            () {
+            h1.style.color = "black"
         })
-        let h1All = document.querySelectorAll('.targetAll')
-        console.log(h1All)
+
+        let h1All = document.querySelectorAll('#targetAll');
+        console.log(h1All);
         for (let i = 0; i < h1All.length; i++) {
-            h1All[i].addEventListener('mouseenter', function () {
-                h1All[i].style.color = 'red'
+            h1All[i].addEventListener('mouseenter', function
+                () {
+                h1All[i].style.color = "yellow"
             })
-            h1All[i].addEventListener('mouseleave', function () {
-                h1All[i].style.color = 'black'
+            h1All[i].addEventListener('mouseleave', function
+                () {
+                h1All[i].style.color = "black"
             })
         }
+
+
+
     </script>
 </body>
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plugin</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/lab17/lightbox2-dev/dist/css/lightbox.css">
+    <link rel="stylesheet" href="/lab17/vegas/vegas.css">
+    <style>
+        img {
+            width: 300px;
+            height: 200px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            plugin in
+        </h1>
+    </header>
+    <div class="container">
+        <a href="/lab13/imgs/5.jpg" data-lightbox="roadtrip"><img src="/lab13/imgs/5.jpg" alt=""></a>
+        <a href="/lab13/imgs/4.jpg" data-lightbox="roadtrip"><img src="/lab13/imgs/4.jpg" alt=""></a>
+        <a href="/lab13/imgs/3.jpg" data-lightbox="roadtrip"><img src="/lab13/imgs/3.jpg" alt=""></a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/lab17/lightbox2-dev/dist/js/lightbox-plus-jquery.js"></script>
+    <script src="/lab17/vegas/vegas.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(function () {
+
+            $("#example, body").vegas({
+                slides: [
+                    { src: "/lab13/imgs/5.jpg" },
+                    { src: "/lab13/imgs/4.jpg" },
+                    { src: "/lab13/imgs/3.jpg" },
+                    { src: "/lab13/imgs/2.jpg" }
+                ]
+            });
+        })
+    </script>
+</body>
+
+</html>

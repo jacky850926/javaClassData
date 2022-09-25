@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Insert title here</title>
+    <style>
+        .tb {
+
+            cellspacing: 2;
+            cellpadding: 1;
+            border: solid 3px gray;
+            width: 600px;
+            margin: auto;
+        }
+
+        .divform {
+
+            width: 1000px;
+            margin: auto;
+        }
+
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <jsp:include page="Header.jsp" />
+    <form action="ExamController" method="post" onsubmit="return check()">
+        <table class="tb">
+            <tr>
+                <td>
+                    <label>考卷名稱:</label>
+                    <input type="text" name="examName" id="name" size="10" maxlength="10"><span id="spExamName"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>科目:</label>
+                    <select name="subject" size="1">
+                        <option value="數學">數學</option>
+                        <option value="英文">英文</option>
+                        <option value="國文">國文</option>
+                    </select>
+                    <label>程度:</label>
+                    <select name="education" size="1">
+                        <option value="國中">國中</option>
+                        <option value="高中">高中</option>
+                        <option value="成人">成人</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>日期:</label>
+                    <input type="text" name="examDate" id="examDate" maxlength="15"><span id="spExamDate"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <center>
+                        <input type="submit" name="todo" value="insert">
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <Script>
+
+        document.getElementById("name").addEventListener('blur', function () {
+
+            if (!nameDatacheck()) {
+                document.getElementById('spExamName').innerHTML = "姓名不能為空"
+            } else {
+                document.getElementById('spExamName').innerHTML = ""
+            }
+
+        })
+
+        document.getElementById("examDate").addEventListener('blur', function () {
+
+            if (!dateDatacheck()) {
+                document.getElementById('spExamDate').innerHTML = "日期格式 2012-12-13"
+            } else {
+                document.getElementById('spExamDate').innerHTML = ""
+            }
+
+        })
+
+        function nameDatacheck() {
+            var name = document.getElementById("name").value
+            if (/^[\s\n\t\r]*$/.test(name)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function dateDatacheck() {
+            var date = document.getElementById("examDate").value
+
+            if (!/^([2]{1}[0]{1}\d{2})-(\d{2})-(\d{2})$/.test(date)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+
+        function check() {
+            var name = document.getElementById("name").value
+            if (/^[\s\n\t\r]*$/.test(name)) {
+                alert("姓名不能為空");
+                return false;
+            }
+
+
+            var date = document.getElementById("examDate").value
+
+            if (!/^([2]{1}[0]{1}\d{2})-(\d{2})-(\d{2})$/.test(date)) {
+                alert("日期格式 2012-12-13");
+                return false;
+            }
+        }
+
+
+
+    </Script>
+</body>
+
+</html>

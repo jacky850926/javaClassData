@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resize</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .resize {
+            width: 400px;
+            height: 300px;
+            position: absolute;
+        }
+
+        img {
+            width: 400px;
+            height: 300px;
+            position: absolute;
+        }
+
+        p {
+            border: 2px solid black;
+            width: 500px;
+            padding: 10px;
+            margin: 10px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            Resize Event
+        </h1>
+    </header>
+
+    <div class="container">
+        <p id="p1"></p>
+        <div class="resize">
+            <img src="pic.jpg" alt="">
+        </div>
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            let p = $('#p1')
+            $('#p1').text
+            $('#p1').text(`innerWidth():${p.innerWidth()},outerWidth():${p.outerWidth()},outerWidth(true):${p.outerWidth(true)}`)
+
+
+            resize_img()
+            $(window).resize(resize_img)
+            function resize_img() {
+                let winWidth = $(window).width()
+                let winHeight = $(window).height()
+                let divWidth = $('.resize').width()
+                let divHeight = $('resize').height()
+
+                let left = (winWidth - divWidth) / 2
+                let top = (winHeight - divHeight) / 2
+
+                $('.resize').css({
+                    'left': left,
+                    'top': top
+                })
+            }
+
+        })
+    </script>
+</body>
+
+</html>

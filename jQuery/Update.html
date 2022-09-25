@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Insert title here</title>
+    <style>
+        .tb {
+
+            cellspacing: 2;
+            cellpadding: 1;
+            border: solid 3px gray;
+            width: 600px;
+            margin: auto;
+        }
+
+        .divform {
+
+            width: 1000px;
+            margin: auto;
+        }
+
+        /*     	td{ */
+        /*     		border: solid 1px black; */
+        /*     	} */
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <jsp:include page="Header.jsp" />
+    <% List<ExamBean> examTable = (List<ExamBean>) session.getAttribute("examTable");
+            %>
+
+            <div class="divform">
+                <form action="ExamController" method="post" onsubmit="return check()">
+
+                    <table class="tb">
+                        <tr>
+                            <td>
+                                <label>考卷名稱:</label>
+                                <input style="border: solid 1px gray" type="text" name="examName" size="10"
+                                    maxlength="10">
+                            </td>
+                            <td>
+                                <span id="spExamName"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>科目:</label>
+                                <select name="subject" size="1">
+                                    <option value="數學">數學</option>
+                                    <option value="英文">英文</option>
+                                    <option value="國文">國文</option>
+                                </select>
+                                <label>程度:</label>
+                                <select name="education" size="1">
+                                    <option value="國中">國中</option>
+                                    <option value="高中">高中</option>
+                                    <option value="成人">成人</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>日期:</label>
+                                <input style="border: solid 1px gray" type="text" name="examDate" maxlength="15">
+                            </td>
+                            <td>
+                                <span id="spExamName"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <center>
+                                    <input type="hidden" name="examID" value="${param.examID}">
+                                    <input type="submit" name="todo" value="update">
+                                </center>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+            <!-- <script type="text/javascript" src="${pageContext.request.contextPath}/ExamFrontCheck.js"></script> -->
+
+</body>
+<Script>
+
+    document.getElementById("name").addEventListener('blur', function () {
+
+        if (!datacheck()) {
+            document.getElementById('spExamName').innerHTML = "姓名不能為空"
+        }
+
+    })
+
+    document.getElementById("name").addEventListener('focus', function () {
+
+        document.getElementById('spExamName').innerHTML = ""
+
+    })
+
+    document.getElementById("examDate").addEventListener('blur', function () {
+
+        if (!datacheck()) {
+            document.getElementById('spExamDate').innerHTML = "日期格式 2012-12-13"
+        }
+
+    })
+
+    document.getElementById("examDate").addEventListener('focus', function () {
+
+        document.getElementById('spExamDate').innerHTML = ""
+
+    })
+
+    function datacheck() {
+        var name = document.getElementById("name").value
+        if (/^[\s\n\t\r]*$/.test(name)) {
+            return false;
+        }
+
+        var date = document.getElementById("examDate").value
+
+        if (!/^([2]{1}[0]{1}\d{2})-(\d{2})-(\d{2})$/.test(date)) {
+            return false;
+        }
+    }
+
+
+    function check() {
+        var name = document.getElementById("name").value
+        if (/^[\s\n\t\r]*$/.test(name)) {
+            alert("姓名不能為空");
+            return false;
+        }
+
+
+        var date = document.getElementById("examDate").value
+
+        if (!/^([2]{1}[0]{1}\d{2})-(\d{2})-(\d{2})$/.test(date)) {
+            alert("日期格式 2012-12-13");
+            return false;
+        }
+    }
+
+
+
+</Script>
+
+</html>

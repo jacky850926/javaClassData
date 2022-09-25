@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkall</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        table {
+            border: 2px solid black;
+            width: 500px;
+            margin: 10px;
+        }
+
+        tr.active {
+            background-color: lightgreen;
+        }
+
+        tr {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            CheckAll
+        </h1>
+    </header>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" name="" id="checkall"></th>
+                    <th>標題</th>
+                    <th>事情</th>
+                    <th>進度</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="content">
+                    <td><input type="checkbox" name="" class="checkbox1"></td>
+                    <td>jQuery</td>
+                    <td>複習jQuery</td>
+                    <td>0</td>
+                </tr>
+                <tr class="content">
+                    <td><input type="checkbox" name="" class="checkbox1"></td>
+                    <td>jQuery</td>
+                    <td>複習jQuery</td>
+                    <td>0</td>
+                </tr>
+                <tr class="content">
+                    <td><input type="checkbox" name="" class="checkbox1"></td>
+                    <td>jQuery</td>
+                    <td>複習jQuery</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+
+            $('.checkbox1').on('click', function () {
+                let checked = $(this).prop('checked')
+                if (checked) {
+                    $(this).closest('tr').addClass('active')
+                } else {
+                    $(this).closest('tr').removeClass('active')
+                }
+
+                let checkContent = $('tr.active').length
+                console.log(checkContent)
+                if (checkContent == 3) {
+                    $('#checkall').prop('checked', true)
+                } else {
+                    $('#checkall').prop('checked', false)
+                }
+            })
+
+            $('#checkall').on('click', function () {
+                if ($(this).prop('checked')) {
+                    $('.content :checkbox').prop('checked', true).closest('tr').addClass('active')
+                } else {
+                    $('.content :checkbox').prop('checked', false).closest('tr').removeClass('active')
+                }
+            })
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slideshow</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .wrap {
+            width: 800px;
+            height: 400px;
+            background-color: black;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-img {
+            position: absolute;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            /* left: -1600px; */
+            width: 4000px;
+        }
+
+        .slide-img li {
+            width: 800px;
+            height: 400px;
+        }
+
+        .slide-img li img {
+            width: 100%;
+            height: 100%;
+            /* 控制元素內容 調整比例 */
+            object-fit: cover;
+        }
+
+        .pages {
+            position: absolute;
+            list-style: none;
+            bottom: 10px;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .pages li {
+            border: 1px solid white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 0 5px
+        }
+
+        .slide-arrow {
+            position: absolute;
+            z-index: 1;
+            background-color: red;
+            font-size: 36px;
+            width: 30px;
+            height: 100%;
+            display: flex;
+            /* 交錯軸置中 */
+            align-items: center;
+            /* 主軸置中 */
+            justify-content: center;
+            color: white;
+            /* 透明度 */
+            opacity: .6;
+            /* 滑鼠型態 */
+            cursor: pointer;
+        }
+
+        .right {
+            right: 0;
+        }
+
+        .slide-arrow:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Slide Show</h1>
+    </header>
+    <div class="container">
+        <div class="wrap">
+            <a class="slide-arrow right" id="slideNext"><i class="fa-solid fa-chevron-right"></i></a>
+            <a class="slide-arrow" id="slidePrev"><i class="fa-solid fa-angle-left"></i></a>
+            <ul class="slide-img">
+                <li><img src="imgs/1.jpg" alt=""></li>
+                <li><img src="imgs/2.jpg" alt=""></li>
+                <li><img src="imgs/3.jpg" alt=""></li>
+                <li><img src="imgs/4.jpg" alt=""></li>
+                <li><img src="imgs/5.jpg" alt=""></li>
+            </ul>
+            <ul class="pages">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://kit.fontawesome.com/464da6b4aa.js" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+
+            /*
+            1.放第一張圖
+            2.放n張圖
+            3.放分頁
+            4.第一張圖移動
+            5.n張圖的移動
+            6.分頁的換色
+            7.左右的換頁
+            */
+            let index = 0
+            let slideMove = 0
+            $('.pages li').eq(0).css('background', 'white')
+            $('.pages li').on('mouseenter', function () {
+                // console.log('123')
+                // $('.slide-img').css('left', '-800px')
+                // let index = $(this).index()
+                index = $(this).index()
+                console.log(index)
+                // let slideMove = 0 - index * 800
+                moveImg();
+            })
+            let pagesli = $('.pages li').length
+
+            $('#slideNext').on('click', function () {
+                index++;
+                // console.log(index)
+                //document.write(pagesli)
+
+                if (index > pagesli - 1) {
+                    index = 0
+                }
+                moveImg();
+            })
+
+            $('#slidePrev').on('click', function () {
+                index--;
+                // console.log(index)
+                if (index < 0) {
+                    index = pagesli - 1;
+                }
+                moveImg();
+            })
+
+            function moveImg() {
+                slideMove = 0 - index * 800
+                $('.slide-img').css('left', slideMove)
+                $('.pages li').eq(index).css('background', 'white').siblings().css('background', 'transparent')
+            }
+
+            setInterval(autoImg, 2000)
+            function autoImg() {
+                index++;
+                if (index >= pagesli) {
+                    index = 0
+                }
+                moveImg();
+            }
+        })
+    </script>
+</body>
+
+</html>

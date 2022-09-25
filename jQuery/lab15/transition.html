@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+        }
+
+        .box:hover {
+            width: 300px;
+            transition: 2px;
+            transition-delay: 1s;
+            border-radius: 50%;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+            animation-name: example;
+            animation-duration: 4s;
+        }
+
+        @keyframes example {
+            from {
+                background-color: lightgreen;
+            }
+
+            to {
+                background-color: yellow;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            CSS Transition
+        </h1>
+    </header>
+    <div class="container">
+        <div class="box"></div>
+        <div class="box1"></div>
+        <div class="box2" style="width: 100px; height: 100px;background-color:pink;"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            let box = document.querySelector('.box2')
+            box.addEventListener('click', function () {
+
+                let t = window.setInterval(show, 1000)
+
+                function show() {
+                    let w = parseInt(box.style.width) + 5
+
+                    if (w >= 200) {
+                        window.clearInterval(t)
+                    }
+                    box.style.width = w + 'px'
+                }
+
+
+
+            })
+        })
+    </script>
+</body>
+
+</html>

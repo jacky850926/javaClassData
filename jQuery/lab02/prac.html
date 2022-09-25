@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prac</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Basic Selector</h1>
+    </header>
+    <div class="container">
+        <table id="target">
+            <tr>
+                <td>1</td>
+                <td class="not">2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td class="not">2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <li>4</li>
+                <li>4</li>
+                <li>4</li>
+            </tr>
+        </table>
+        <p id="para1"><span>jQuery</span>Lorem ipsum dolor sit amet consectetur adipisicing elit.Odit vitae fugit dolor
+            ad cumque molestias qui necessitatibus consequuntur minus delectus sint est temporibus, to
+            tam atque et quaerat magni, ratione excepturi?</p>
+
+        <p id="para2">Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+            pedita, doloremque maiores molestias quam sit sed dolore, hic laborum, quisquam reprehenderit quia debitis!
+            Enim delectus, consequuntur similique laboriosam magni tempora suscipit?</p>
+        <p class="para3"></p>
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $('li').first().css('background', 'lightblue')
+        $('li').eq(1).css('background', 'red')
+        // $('td').on('mouseenter', function () {
+        //     console.log($(this).index())
+        // })
+
+
+        $('p:contains("Hello")').css('background', 'green')
+        $('#para1').css('background', 'red')
+        $('p:empty').text('empty text')
+
+        $('p:contains("empty text")').css('color', 'blue')
+        $('tr td:first-child').css('color', 'green')
+        $('td:even').css('background', 'yellow')
+
+    </script>
+</body>
+
+</html>

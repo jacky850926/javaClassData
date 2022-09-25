@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .target {
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .wrap {
+            background-color: lightgray;
+            width: 800px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>CSS</h1>
+    </header>
+    <div class="container">
+        <div class="wrap">
+
+            <div class="target"></div>
+        </div>
+        <hr>
+        <div class="circle" style="background-color:red"></div>
+        <div class="circle" style="background-color:orange"></div>
+        <div class="circle" style="background-color:yellow"></div>
+        <div class="circle" style="background-color:green"></div>
+        <div class="circle" style="background-color:blue"></div>
+        <div class="circle" style="background-color:blueviolet"></div>
+        <div class="circle" style="background-color:purple"></div>
+        <hr>
+        <input type="text" id="test">
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            $('.target').css({
+                // top: 20,
+                // left: 20,
+                // background: 'lightgreen'
+            })
+            $('#test').keyup(function () {
+                console.log(event.keyCode)
+                /*
+                38 上
+                40 下
+                37 左
+                39 右
+                */
+            })
+
+
+            $('.circle').on('click', function () {
+                console.log($(this).css('background'))
+                let color = $(this).css('background')
+                $('.target').css('background', color)
+            })
+
+            document.onkeydown = function move() {
+                switch (event.keyCode) {
+                    case 40:
+                        if (parseInt($('.target').css('top')) < 300) {
+                            $('.target').css({
+                                top: '+=' + 20,
+                                background: 'lightgreen'
+                            })
+                        } else {
+                            $('.target').css('top', 300)
+                        }
+                        // $('.target').css({
+                        //     top: '+=' + 20,
+                        //     background: 'lightgreen'
+                        // })
+                        break;
+                    case 38:
+                        if (parseInt($('.target').css('top')) > 0) {
+                            $('.target').css({
+                                top: '-=' + 20,
+                                background: 'lightgreen'
+                            })
+                        } else {
+                            $('.target').css('top', 0)
+                        }
+                        // $('.target').css({
+                        //     top: '-=' + 20,
+                        //     background: 'lightgreen'
+                        // })
+                        break;
+                    case 39:
+                        if (parseInt($('.target').css('left')) < 700) {
+                            $('.target').css({
+                                left: '+=' + 20,
+                                background: 'lightgreen'
+                            })
+                        } else {
+                            $('.target').css('left', 700)
+                        }
+                        // $('.target').css({
+                        //     left: '+=' + 20,
+                        //     background: 'lightblue'
+                        // })
+                        break;
+                    case 37:
+                        if (parseInt($('.target').css('left')) > 0) {
+                            $('.target').css({
+                                left: '-=' + 20,
+                                background: 'lightgreen'
+                            })
+                        } else {
+                            $('.target').css('left', 0)
+                        }
+                        // $('.target').css({
+                        //     left: '-=' + 20,
+                        //     background: 'lightblue'
+                        // })
+                        break;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

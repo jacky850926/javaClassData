@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Animate</h1>
+    </header>
+    <div class="container">
+        <button id="hide">hide</button>
+        <button id="show">show</button>
+        <button id="toggle">toggle</button>
+        <button id="slideUp">slide up</button>
+        <button id="slideDown">slide down</button>
+        <button id="slideToggle">slide toggle</button>
+        <button id="fadeIn">fadeIn</button>
+        <button id="fadeout">fadeout</button>
+        <button id="fadeToggle">fadeToggle</button>
+        <br>
+        <button id="moveRight">move right</button>
+        <button id="moveAround">move around</button>
+        <button id="moveSwing">move swing</button>
+        <hr>
+        <div class="box"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            //animate()
+            $('#moveRight').on('click', function () {
+                $('.box').animate({
+                    left: 600,
+                    height: 500,
+                    width: 500
+                }, 1000)
+            })
+
+            $('#moveAround').on('click', function () {
+                $('.box').animate({
+                    left: 300,
+
+                }).animate({
+                    top: 300,
+
+                }).animate({
+                    left: 0,
+                    top: 300
+
+                }).animate({
+                    left: 0,
+                    top: 0
+
+                })
+            })
+
+            $('#moveSwing').on('click', function () {
+                $('.box').animate({
+                    left: 300,
+                    top: 300
+                }, {
+                    duration: 1000,
+                    specialEasing: {
+                        top: 'linear',
+                        left: 'linear'
+                    }
+                }).animate({
+                    left: 0,
+                    top: 0
+                }, {
+                    duration: 500,
+                    specialEasing: {
+                        top: 'linear',
+                        left: 'linear'
+                    }
+                })
+            })
+
+
+            //fade in,fade out
+            $('#fadeIn').on('click', function () {
+                $('.box').fadeIn(1000)
+            })
+
+            $('#fadeout').on('click', function () {
+                $('.box').fadeOut(1000)
+            })
+
+            $('#fadeToggle').on('click', function () {
+                $('.box').fadeToggle(1000)
+            })
+
+
+            //slidedown
+            $('#slideUp').on('click', function () {
+                $('.box').slideUp(1000)
+            })
+
+            $('#slideDown').on('click', function () {
+                $('.box').slideDown(1000)
+            })
+
+            $('#slideToggle').on('click', function () {
+                $('.box').slideToggle(1000)
+            })
+
+            //hide
+            $('#hide').on('click', function () {
+                $('.box').hide(1000)
+            })
+
+            $('#show').on('click', function () {
+                $('.box').show(1000)
+            })
+
+            $('#toggle').on('click', function () {
+                $('.box').toggle(1000)
+            })
+        })
+    </script>
+</body>
+
+</html>
