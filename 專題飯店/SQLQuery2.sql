@@ -21,8 +21,8 @@ select reservationID,roomID,checkInDate,checkOutDate from reservation where chec
 select roomID,'2022-09-11' checkInDate,'2022-09-12' checkOutDate from room where roomID not in ((select roomID from reservation where checkInDate in ('2022-09-11','2022-09-12') or checkoutdate in ('2022-09-11','2022-09-12')));
 
 select * from room where roomID not in  ((select roomID from reservation where checkInDate in ('2022-09-11','2022-09-12') or checkoutdate in ('2022-09-11','2022-09-12')))
-
-select * from room where roomID not in  (select roomID from reservation where checkInDate between '2022-09-12' and '2022-09-14' or checkoutdate between '2022-09-12' and '2022-09-14')
+--目的應該是抓出有房間的飯店名字
+select * from (select * from room where roomID not in  (select roomID from reservation where checkInDate between '2022-09-12' and '2022-09-14' or checkoutdate between '2022-09-12' and '2022-09-14')) as a join roomstyle as b on a.roomStyleID = b.styleID order by hotelID
 
 select roomID from reservation where checkInDate between '2022-09-12' and '2022-09-14' or checkoutdate between '2022-09-12' and '2022-09-14'
 
