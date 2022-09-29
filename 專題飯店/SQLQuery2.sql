@@ -29,4 +29,4 @@ select roomID from reservation where checkInDate between '2022-09-12' and '2022-
 select * from room e1 join reservation e2 on e1.roomID  = e2.roomID
 
 
-select c.name from (select * from room where roomID not in  (select roomID from reservation where checkInDate between '2022-10-11' and '2022-10-12' or checkoutdate between '2022-10-11' and '2022-10-14')) as a JOIN roomstyle as b on a.roomStyleID = b.styleID JOIN hotel as c on b.hotelID = c.hotelID where c.country = '台灣' and b.capacity > 2 order by b.hotelID
+select c.hotelID,c.name,c.address,c.averagePrice,count(*) amount from (select * from room where roomID not in  (select roomID from reservation where checkInDate between '2022-10-11' and '2022-10-12' or checkoutdate between '2022-10-11' and '2022-10-14')) as a JOIN roomstyle as b on a.roomStyleID = b.styleID JOIN hotel as c on b.hotelID = c.hotelID where c.country = '台灣' and b.capacity > 2 group by c.hotelID,c.name,c.address,c.averagePrice
