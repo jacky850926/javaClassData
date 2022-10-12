@@ -40,3 +40,9 @@ select b.styleID,b.name,b.price,b.capacity,b.bed,count(*) roomAmount from (selec
 select * from room where roomID not in  (select roomID from reservation where checkInDate between '2022-10-04' and '2022-10-04' or checkoutdate between '2022-10-04' and '2022-10-04') and roomStyleID = 8
 
 select * from (select * from room where roomID not in  (select roomID from reservation where checkInDate between '2022-10-04' and '2022-10-04' or checkoutdate between '2022-10-04' and '2022-10-04') ) as a JOIN roomstyle as b on a.roomStyleID = b.styleID JOIN hotel as c on b.hotelID = c.hotelID where roomStyleID = 8 and b.capacity > 2
+
+select roomID from reservation where checkInDate between '2022-10-04' and '2022-10-04' or checkoutdate between '2022-10-04' and '2022-10-04'
+--後端查詢房型預訂情況
+select * from(select * from room where roomstyleID = 5) as a left join (select * from reservation where checkInDate = '2022-10-12' or checkoutdate = '2022-10-12') as b on a.roomID = b.roomID
+--查詢單一房間預訂情況
+select * from reservation where checkInDate = '2022-10-12' or checkoutdate = '2022-10-12' and roomID = 1016
